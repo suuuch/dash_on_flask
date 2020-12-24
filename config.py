@@ -43,8 +43,8 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     """Statement for enabling the development environment"""
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:mysql@127.0.0.1:3306/flask_web?charset=utf8mb4'
-    REDIS_URL = f"redis://:@127.0.0.1:6379/0"
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    REDIS_URL = os.environ.get('REDIS_CACHE_URL')
     SQLALCHEMY_ECHO = True
     DEBUG = True
 
@@ -68,7 +68,7 @@ class UATConfig(ProductionConfig):
 class TestingConfig(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    
+
     # Define the database - we are working with
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:mysql@127.0.0.1:3306/flask_web?charset=utf8mb4'
     REDIS_URL = f"redis://:@127.0.0.1:6379/0"
