@@ -1,5 +1,6 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
@@ -12,7 +13,6 @@ class Config(object):
         "pool_recycle": 300,
     }
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    BASE_DIR = BASE_DIR
 
     # Enable protection agains *Cross-site Request Forgery (CSRF)*
     WTF_CSRF_ENABLED = False
@@ -84,3 +84,4 @@ config = {
     'api': APIConfig,
     'uat': UATConfig,
 }
+

@@ -3,12 +3,12 @@ from flask import Flask
 from flask.helpers import get_root_path
 from flask_login import login_required
 
-from config import BaseConfig
+from config import config
 
 
-def create_app():
+def create_app(config_name):
     server = Flask(__name__)
-    server.config.from_object(BaseConfig)
+    server.config.from_object(config[config_name])
 
     register_dashapps(server)
     register_extensions(server)
